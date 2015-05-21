@@ -13,8 +13,7 @@
 (function ($) { 'use strict';
 
     if($.submitHandler) {
-        console.log('Warning: Javascript file is included twice: handle.submit.feedback.js');
-        throw new Error();
+        throw new Error('Warning: Javascript file is included twice: handle.submit.feedback.js');
     }
 
     $.submitHandler = {
@@ -55,7 +54,6 @@
     function addMsgLabel(formGroup, msg, forInput, displayBlock) {
         var style = displayBlock ? 'style="display:block"' : '';
         formGroup.addClass($.submitHandler.formGroup.errorClass).append('<label class="'+$.submitHandler.formGroup.errorLabelClass+'" for="'+forInput+'" '+style+'>'+msg+'</label>')
-        console.log(formGroup)
     }
 
     function showMessages(formGroup, messages, forInput) {
