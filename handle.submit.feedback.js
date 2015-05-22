@@ -6,8 +6,9 @@
 *  Copyright 2015 Meliq Pilosyan
 *  Released as open source
 *
-* This is a simple backend messages handler for HTML forms.
-* It requires jquery and jquery_ujs libs
+* This is a simple backend messages handler for HTML forms currently working in Ruby on Rails environment.
+* Requires jQuery and jQuery-ujs libs to be loaded before it.
+*
 *****************************************************/
 
 (function ($) { 'use strict';
@@ -17,11 +18,8 @@
     }
 
     $.submitHandler = {
-        // The key in response JSON to handle as response messages.
-        // The value should be a key/value object where the key will be the id or name of input
-        // and the value is actual message or array of messages concerning with that input.
-        // Default: 'errors'
-        messagesObjectKey: 'errors',
+        // The errors data key name
+        dataKey: 'errors',
 
         // The key of redirect url in response JSON
         redirectURLKey: 'url',
@@ -100,11 +98,6 @@
         })
     }
 
-    function checkResponseFormat(response) {
-        if(typeof response === 'object' && response.status && response[$.submitHandler.messagesObjectKey]) return true;
-        throw new TypeError('AJAX response should be like {status: \'ok/nok\', errors: {INPUT_NAME: \'message to display\', ...}: handleSubmitFeedback');
-    }
-
     // Maybe used during further development to check input name
     $.fn.nameInclude = function (s) {
         var name = this.attr('name');
@@ -114,20 +107,19 @@
     /***
      * The plugin main method to register ajax event handlers on form element.
      *
-     * Callback functions will called on jQuery object of form.
-     * Feel free to use `this` in callbacks as form jQuery object reference.
-     *
      * `options` keys:
      *      fnPrepareCB: function() { // Specify some special preparation on load }
-     *      fnStatusOkCB: function(response) { // Calls when AJAX succeeded with response.status = 'ok' }
-     *      fnStatusNokCB: function(response) { // Calls when AJAX succeeded with response.status = 'nok' }
-     *      fnAjaxErrorCB: function(event, data, status, xhr) { // Calls when AJAX failed }
+     *      fnStatusOkCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'ok' }
+     *      fnStatusNokCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'nok' }
+     *      fnAjaxErrorCB: function(event, data, status, xhr) { // Handle AJAX failure }
      *
      *      reloadPage: // Boolean flag to reload current page when AJAX succeeded and response.status = 'ok'
-     *      redirect: // Boolean flag to redirect to response.url when AJAX succeeded and response.status = 'ok'. If this flag is set
+     *      redirect: // Boolean flag to redirect to response.url when AJAX succeeded and response.status = 'ok'
+     *
+     * Callback functions will be called on jQuery object of form.
+     * Feel free to use `this` in callbacks as form jQuery object reference.
      *
      * Usage:
-     *
      *  $('form').handleSubmitFeedback({
      *      fnPrepareCB: function() { // Prepare form },
      *      reloadPage: true
@@ -144,14 +136,12 @@
         form.find('input').filter(':visible:first').select();
 
         form.on('ajax:success', function (event, data, status, xhr) {
-            checkResponseFormat(data);
-
             if (data.status === 'ok') {
                 if(options.reloadPage === true) window.location = window.location;
                 if(options.redirect === true) window.location = data[$.submitHandler.redirectURLKey];
                 form.onStatusOK(data);
             } else {
-                showResponseMessagesOn(form, data[$.submitHandler.messagesObjectKey]);
+                showResponseMessagesOn(form, data[$.submitHandler.dataKey]);
                 form.onStatusNok(data);
             }
         }).on('ajax:error', function (event, data, status, xhr) {
