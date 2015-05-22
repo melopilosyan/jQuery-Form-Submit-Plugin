@@ -16,13 +16,12 @@
   The plugin provides `handleSubmitFeedback()` method with options as parameter.
   
   *options* keys
-  
-    *fnPrepareCB: function() { // Specify some special preparation on load }
-    *fnStatusOkCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'ok' }
-    *fnStatusNokCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'nok' }
-    *fnAjaxErrorCB: function(event, data, status, xhr) { // Handle AJAX failure }
-    *reloadPage: // Boolean flag to reload current page when AJAX succeeded and response.status = 'ok'
-    *redirect: // Boolean flag to redirect to response.url(by default) when AJAX succeeded and response.status = 'ok'
+    * fnPrepareCB: function() { // Specify some special preparation on load }
+    * fnStatusOkCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'ok' }
+    * fnStatusNokCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'nok' }
+    * fnAjaxErrorCB: function(event, data, status, xhr) { // Handle AJAX failure }
+    * reloadPage: // Boolean flag to reload current page when AJAX succeeded and response.status = 'ok'
+    * redirect: // Boolean flag to redirect to response.url(by default) when AJAX succeeded and response.status = 'ok'
   
   Callback functions will be called on jQuery object of form.
   Feel free to use `this` in callbacks as form jQuery object reference.
