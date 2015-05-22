@@ -16,6 +16,7 @@
   The plugin provides `handleSubmitFeedback()` method with options as parameter.
   
   *options* keys
+
     * fnPrepareCB: function() { // Specify some special preparation on load }
     * fnStatusOkCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'ok' }
     * fnStatusNokCB: function(response) { // Do stuff when AJAX succeeded with response.status = 'nok' }
