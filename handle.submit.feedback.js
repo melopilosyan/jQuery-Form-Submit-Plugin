@@ -1,7 +1,7 @@
 /*****************************************************
 *
 *  jQuery Handle Form Submit Feedback Plugin v1.3.1
-*  https://github.com/
+*  https://github.com/melopilosyan/jQuery-Form-Submit-Plugin
 *
 *  Copyright 2015 Meliq Pilosyan
 *  Released as open source

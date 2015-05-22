@@ -1,4 +1,4 @@
-# jQuery-Form-Submit-Plugin
+# jQuery Form Submit Handler Plugin
 
   A simple backend messages handler for HTML forms.
   Requires jQuery and jQuery-ujs libs to be loaded before it.
