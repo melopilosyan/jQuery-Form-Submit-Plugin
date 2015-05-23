@@ -88,8 +88,8 @@
   // Error indicator CSS class of form group
   $.submitHandler.formGroup.errorClass: 'has-error';
   
-  // Added label CSS class
-  $.submitHandler.formGroup.errorLabelClass: 'error-label';
+  // Additional CSS class for added error label. By default 'error-label' is set
+  $.submitHandler.formGroup.errorLabelClass: '';
   ```
 
   Change this values globally in the begining of your JS file or locally before each plugin use.

@@ -30,7 +30,7 @@
             cssClass: 'form-group',
             // Error indicator CSS class of form group
             errorClass: 'has-error',
-            // Error indicator CSS class of label
+            // Additional CSS class for error label. By default 'error-label' is set
             errorLabelClass: 'error-label'
         }
     };
@@ -51,7 +51,7 @@
 
     function addMsgLabel(formGroup, msg, forInput, displayBlock) {
         var style = displayBlock ? 'style="display:block"' : '';
-        formGroup.addClass($.submitHandler.formGroup.errorClass).append('<label class="'+$.submitHandler.formGroup.errorLabelClass+'" for="'+forInput+'" '+style+'>'+msg+'</label>')
+        formGroup.addClass($.submitHandler.formGroup.errorClass).append('<label class="error-label '+$.submitHandler.formGroup.errorLabelClass+'" for="'+forInput+'" '+style+'>'+msg+'</label>')
     }
 
     function showMessages(formGroup, messages, forInput) {
@@ -66,7 +66,7 @@
 
     function cleanFormGroup(formGroup) {
         if(formGroup.hasClass($.submitHandler.formGroup.errorClass))
-            formGroup.removeClass($.submitHandler.formGroup.errorClass).find('.'+$.submitHandler.formGroup.errorLabelClass).remove()
+            formGroup.removeClass($.submitHandler.formGroup.errorClass).find('.error-label').remove()
     }
 
     function cleanFormGroupOnInputInput(input, formGroup) {
