@@ -9,7 +9,7 @@
   ```ruby
   //= require jquery
   //= require jquery_ujs
-  //= require 'path/to/handle.submit.feedback.js'
+  //= require path/to/handle.submit.feedback.js
   ```
 
 ## Description
