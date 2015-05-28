@@ -106,14 +106,14 @@
 
   $('another-awesome-form').handleSubmitFeedback({
     fnStatusOkCB: function(response) {
-      // For example empty form inputs and offer user do add one more item
+      // For example empty form inputs and offer user to add one more item
       this.find('input').val('');
       this.find('button[type=submit]').text('Add another ITEM');
       // `this` will reffer to current form jQuery object
     }
   });
 
-  // If you form is on a popup dialog and need to refresh current page to see added item
+  // If your form is on a popup dialog and need to refresh current page to see added item
   $('form').handleSubmitFeedback({reloadPage: true});
   ```
 
