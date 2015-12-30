@@ -117,6 +117,6 @@
   $('form').handleSubmitFeedback({reloadPage: true});
   ```
 
-## Authors
+#### Author
 
   [Meliq Pilosyan](https://github.com/melopilosyan)
